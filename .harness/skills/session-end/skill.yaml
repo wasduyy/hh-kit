@@ -1,0 +1,20 @@
+id: session-end
+name: "Session End"
+version: "1.0"
+description: "Protocol for ending an AI session: persist state, update memory, commit pending changes"
+style: procedural
+trigger: "When user ends a session, or when closing the conversation"
+commands: ["/hh -e"]
+depends_on:
+  files:
+    - ".control/memory-bank/activeContext.md"
+    - ".control/memory-bank/progress.md"
+    - ".control/state.json"
+  mcp_tools:
+    - sync_all
+    - trace_stats
+outputs:
+  - updated_file: ".control/memory-bank/activeContext.md"
+  - updated_file: ".control/memory-bank/progress.md"
+  - updated_file: ".control/state.json"
+  - updated_file: ".control/harness.summary.md"

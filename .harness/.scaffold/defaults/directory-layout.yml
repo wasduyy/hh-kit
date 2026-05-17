@@ -1,0 +1,84 @@
+zones:
+  harness:
+    name: ".harness"
+    description: "AI 驾驭层 — 框架约定、工具、适配器（通常不需要修改）"
+    directories:
+      - path: .harness/.scaffold
+        description: "框架内核（defaults/schemas/sql/hooks/adapters/mcp-server）"
+      - path: .harness/.trae/rules
+        description: "Trae IDE 规则文件"
+      - path: .harness/skills
+        description: "内置技能库"
+      - path: .harness/personas
+        description: "内置角色库"
+      - path: .harness/templates
+        description: "Starter 模板库"
+      - path: .harness/troubleshooting
+        description: "故障手册"
+      - path: .harness/scripts
+        description: "工具脚本"
+    files:
+      - path: .harness/pyproject.toml
+        description: "依赖声明"
+      - path: .harness/.python-version
+        description: "Python 版本"
+      - path: .harness/harness.schema.json
+        description: "根 schema 引用"
+      - path: .harness/CHANGELOG.md
+        description: "变更日志"
+
+  control:
+    name: ".control"
+    description: "工程控制 — 项目配置、阶段状态、会话记忆"
+    directories:
+      - path: .control/memory-bank
+        description: "会话记忆（跨会话上下文）"
+      - path: .control/stage_results
+        description: "阶段验证结果"
+    files:
+      - path: .control/harness.yml
+        description: "项目配置（唯一入口）"
+      - path: .control/harness.summary.md
+        description: "配置透明性清单"
+      - path: .control/state.json
+        description: "当前阶段状态"
+      - path: .control/trace.db
+        description: "SQLite 追溯库（Layer 1+）"
+      - path: .control/memory-bank/activeContext.md
+        description: "当前焦点和未完成事项"
+      - path: .control/memory-bank/progress.md
+        description: "进度日志"
+
+  knowledge:
+    name: "knowledge"
+    description: "过程资产 — 需求、决策、追溯等工程知识"
+    directories:
+      - path: knowledge/requirements
+        description: "需求文档 (REQ-*)"
+      - path: knowledge/analysis
+        description: "分析文档 (ANA-*)"
+      - path: knowledge/decisions
+        description: "决策记录 (DEC-*)"
+      - path: knowledge/tasks
+        description: "任务文档 (TSK-*)"
+      - path: knowledge/implementations
+        description: "实现记录 (IMP-*)"
+      - path: knowledge/tests
+        description: "测试记录 (TST-*)"
+      - path: knowledge/bugs
+        description: "缺陷记录 (BUG-*)"
+      - path: knowledge/reviews
+        description: "回顾记录 (REV-*)"
+      - path: knowledge/progress
+        description: "进度报告"
+
+  project:
+    name: "project"
+    description: "开发产物 — 源代码和测试"
+    directories:
+      - path: project/src
+        description: "源代码"
+      - path: project/tests
+        description: "测试代码"
+      - path: project/acceptance
+        description: "验收测试"

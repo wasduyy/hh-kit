@@ -1,0 +1,17 @@
+id: bug-fix
+name: "Bug Fix"
+version: "1.0"
+description: "Defect fix workflow with full traceability: BUG → FIX → regression verification"
+style: procedural
+trigger: "When a bug/defect is discovered or reported"
+commands: []
+depends_on:
+  files: []
+  mcp_tools:
+    - trace_next_id
+    - trace_create_node
+    - trace_create_edge
+    - trace_update_node
+outputs:
+  - trace_node: { type: bug, prefix: BUG }
+  - trace_node: { type: fix, prefix: FIX }

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archaihelper.dev/schemas/trace-node.schema.json",
+  "title": "Trace Node YAML Frontmatter",
+  "type": "object",
+  "required": ["id", "type", "title", "status", "created"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(REQ|ANA|DEC|TSK|IMP|TST|BUG|REV)-\\d{3,}$",
+      "description": "Trace ID in format TYPE-NNN"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["requirement", "analysis", "decision", "task", "implementation", "test", "bug", "review"]
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "accepted", "in_progress", "completed", "verified", "resolved", "passed", "failed", "discovered_bug"]
+    },
+    "phase": { "type": "string" },
+    "priority": { "type": "string", "enum": ["high", "medium", "low"] },
+    "severity": { "type": "string", "enum": ["Blocker", "Partial", "Minor"] },
+    "assignee": { "type": "string" },
+    "file_path": { "type": "string" },
+    "commit_hash": { "type": "string" },
+    "traces_from": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "traces_to": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "created": { "type": "string", "format": "date" },
+    "accepted": { "type": "string", "format": "date" },
+    "resolved": { "type": "string", "format": "date" }
+  }
+}

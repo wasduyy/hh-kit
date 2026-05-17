@@ -1,0 +1,64 @@
+project:
+  name: ""
+  starter: _blank
+
+phases:
+  - name: scaffold
+    auto_advance: true
+    gates:
+      - "directory_exists"
+      - "services_healthy"
+  - name: implement
+    auto_advance: false
+    human_confirm_on: "gate_pass"
+    gates:
+      - "unit_tests_pass"
+  - name: verify
+    auto_advance: false
+    human_confirm_on: "gate_pass"
+    gates:
+      - "integration_tests_pass"
+      - "coverage >= 80"
+  - name: integrate
+    auto_advance: true
+    gates:
+      - "e2e_tests_pass"
+  - name: acceptance
+    auto_advance: false
+    human_confirm_on: "gate_pass"
+    gates:
+      - "acceptance_report_all_pass"
+
+memory:
+  backend: markdown
+
+traceability:
+  enabled: true
+  domains:
+    - requirement
+    - analysis
+    - decision
+    - task
+    - implementation
+    - test
+    - bug
+    - review
+  gate_checks:
+    phase_2: requirements_traced
+    phase_3: decisions_implemented
+    phase_4: implementations_tested
+    phase_5: all_traces_complete
+  commit_convention: true
+  branch_convention: true
+
+guardrails:
+  debug_retry_limit: 2
+  runtime_retry_limit: 3
+  first_test_human_confirm: true
+  dependency_lock: true
+
+roles:
+  enabled: false
+  personas: []
+
+override: {}

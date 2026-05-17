@@ -1,0 +1,16 @@
+id: adr-write
+name: "ADR Write"
+version: "1.0"
+description: "Write Architecture Decision Records with proper structure and traceability"
+style: framework
+trigger: "When a technical decision needs to be documented, or when creating DEC-* nodes"
+commands: []
+depends_on:
+  files: []
+  mcp_tools:
+    - trace_next_id
+    - trace_create_node
+    - trace_create_edge
+outputs:
+  - trace_node: { type: decision, prefix: DEC }
+  - knowledge_file: "knowledge/decisions/DEC-NNN-*.md"

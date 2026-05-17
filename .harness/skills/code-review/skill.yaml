@@ -1,0 +1,16 @@
+id: code-review
+name: "Code Review"
+version: "1.0"
+description: "Systematic code review framework with traceability awareness"
+style: framework
+trigger: "When reviewing code changes, PRs, or when user requests a review"
+commands: []
+depends_on:
+  files:
+    - ".harness/.scaffold/defaults/coding-principles.md"
+  mcp_tools:
+    - trace_report
+    - trace_query
+outputs:
+  - review_report: "Structured review findings"
+  - optional_trace: "REV-* node if formal review"

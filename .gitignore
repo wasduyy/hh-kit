@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.env
+*.db
+*.db-journal
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+.trae/mcp.json
+.harness/.trae/
+llmResponse

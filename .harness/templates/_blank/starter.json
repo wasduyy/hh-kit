@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "name": "_blank",
+  "description": "Blank starter with minimal scaffolding",
+  "phases": [
+    { "name": "scaffold", "gates": ["directory_exists"] },
+    { "name": "implement", "gates": ["unit_tests_pass"] },
+    { "name": "verify", "gates": ["integration_tests_pass"] },
+    { "name": "acceptance", "gates": ["acceptance_report_all_pass"] }
+  ]
+}

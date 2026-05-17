@@ -1,0 +1,16 @@
+id: trace-create
+name: "Trace Create"
+version: "1.0"
+description: "Create a traceability node with proper upstream links and file creation"
+style: procedural
+trigger: "When creating any requirement, analysis, decision, task, implementation, test, bug, or review record"
+commands: []
+depends_on:
+  files: []
+  mcp_tools:
+    - trace_next_id
+    - trace_create_node
+    - trace_create_edge
+outputs:
+  - db_record: "trace_nodes table"
+  - optional_file: "knowledge/{type}s/{ID}-*.md"

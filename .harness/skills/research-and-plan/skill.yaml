@@ -1,0 +1,17 @@
+id: research-and-plan
+name: "Research and Plan"
+version: "1.0"
+description: "Research a problem space and produce a structured plan with traceability"
+style: hybrid
+trigger: "When starting work on a new requirement, feature, or complex task"
+commands: []
+depends_on:
+  files:
+    - ".control/state.json"
+  mcp_tools:
+    - trace_create_node
+    - trace_query
+outputs:
+  - trace_node: { type: analysis, prefix: ANA }
+  - trace_node: { type: decision, prefix: DEC }
+  - trace_node: { type: task, prefix: TSK }

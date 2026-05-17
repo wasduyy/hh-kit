@@ -1,0 +1,19 @@
+id: stage-advance
+name: "Stage Advance"
+version: "1.0"
+description: "Advance to the next project phase with gate checks, human confirmation, and trace validation"
+style: procedural
+trigger: "When all tasks in current phase are done and user wants to move to next phase"
+commands: []
+depends_on:
+  files:
+    - ".control/state.json"
+    - ".control/harness.yml"
+  mcp_tools:
+    - gate_check
+    - state_advance
+    - trace_validate
+    - sync_all
+outputs:
+  - updated_file: ".control/state.json"
+  - updated_file: ".control/harness.summary.md"

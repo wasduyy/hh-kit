@@ -1,0 +1,11 @@
+[project]
+name = "archaihelper-scaffold"
+version = "0.1.0"
+description = "archAIHelper scaffold MCP Server"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+]
+
+[project.scripts]
+harness-mcp = ".scaffold.mcp_server.server:main"

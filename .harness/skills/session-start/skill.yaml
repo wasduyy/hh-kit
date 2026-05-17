@@ -1,0 +1,14 @@
+id: session-start
+name: "Session Start"
+version: "1.0"
+description: "Protocol for starting a new AI session with full project context"
+style: procedural
+trigger: "When a new conversation/session begins in the project"
+commands: ["/hh", "/hh -s"]
+depends_on:
+  files:
+    - ".control/state.json"
+    - ".control/memory-bank/activeContext.md"
+    - ".control/harness.summary.md"
+  mcp_tools: []
+outputs: []

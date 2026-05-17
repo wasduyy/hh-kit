@@ -1,0 +1,23 @@
+#!/bin/bash
+# commit-msg hook: validate commit message follows trace convention
+# Install: cp .scaffold/hooks/commit-msg .git/hooks/commit-msg
+# Format: [{TRACE_ID}|{TASK_ID}] {title}
+#         Traces: {upstream_ids}
+
+MSG_FILE="$1"
+MSG=$(cat "$MSG_FILE")
+
+if echo "$MSG" | grep -qE '^\[(REQ|ANA|DEC|TSK|IMP|FIX|OPT|TST|BUG|REV)-[0-9]+'; then
+    exit 0
+fi
+
+echo ""
+echo "[archAIHelper] WARNING: Commit message does not follow trace convention."
+echo "  Expected format: [{TRACE_ID}|{TASK_ID}] {title}"
+echo "  Example: [IMP-012|TSK-007] Implement vector_store.py"
+echo "  Traces: TSK-007, DEC-003, REQ-001"
+echo ""
+echo "  To skip this check, use: git commit --no-verify"
+echo ""
+
+exit 1

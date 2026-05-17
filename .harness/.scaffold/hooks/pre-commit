@@ -1,0 +1,19 @@
+#!/bin/bash
+# pre-commit hook: validate trace ID references in commit message context
+# Install: cp .scaffold/hooks/pre-commit .git/hooks/pre-commit
+
+echo "[archAIHelper] Validating staged files..."
+
+STAGED=$(git diff --cached --name-only)
+
+for file in $STAGED; do
+    case "$file" in
+        docs/requirements/*|docs/analysis/*|docs/decisions/*|docs/tasks/*|docs/tests/*|docs/bugs/*|docs/retrospective/*)
+            if command -v python3 &>/dev/null; then
+                python3 scripts/diagnose.py --check-file "$file" 2>/dev/null
+            fi
+            ;;
+    esac
+done
+
+exit 0

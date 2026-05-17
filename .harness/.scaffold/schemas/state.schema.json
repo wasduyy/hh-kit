@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archaihelper.dev/schemas/state.schema.json",
+  "title": "Project State",
+  "type": "object",
+  "required": ["version", "project", "current_phase", "phases"],
+  "properties": {
+    "version": { "type": "string", "const": "1.0" },
+    "project": { "type": "string" },
+    "current_phase": { "type": "string" },
+    "completed_phases": { "type": "array", "items": { "type": "string" } },
+    "phases": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "status": { "type": "string", "enum": ["pending", "in_progress", "completed", "blocked"] },
+          "started_at": { "type": "string", "format": "date-time" },
+          "completed_at": { "type": "string", "format": "date-time" },
+          "validation_log": { "type": "string" },
+          "last_action": { "type": "string" },
+          "remaining_tasks": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

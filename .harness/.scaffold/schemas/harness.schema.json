@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archaihelper.dev/schemas/harness.schema.json",
+  "title": "Harness Project Configuration",
+  "type": "object",
+  "required": ["project"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "starter": { "type": "string", "default": "_blank", "enum": ["_blank", "cognitive-engine", "web-api", "data-pipeline"] }
+      }
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "gates"],
+        "properties": {
+          "name": { "type": "string" },
+          "auto_advance": { "type": "boolean", "default": true },
+          "human_confirm_on": { "type": "string", "enum": ["gate_pass", "never"] },
+          "gates": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "properties": {
+        "backend": { "type": "string", "default": "markdown", "enum": ["markdown", "mcp", "knowledge-graph"] },
+        "mcp_endpoint": { "type": "string", "format": "uri" },
+        "kg_backend": { "type": "string" }
+      }
+    },
+    "traceability": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "domains": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["requirement", "analysis", "decision", "task", "implementation", "test", "bug", "review"] }
+        },
+        "gate_checks": { "type": "object", "additionalProperties": { "type": "string" } },
+        "commit_convention": { "type": "boolean", "default": true },
+        "branch_convention": { "type": "boolean", "default": true },
+        "backend": { "type": "string", "default": "sqlite", "enum": ["sqlite", "taiga", "redmine"] },
+        "sqlite_path": { "type": "string", "default": ".control/trace.db" }
+      }
+    },
+    "guardrails": {
+      "type": "object",
+      "properties": {
+        "debug_retry_limit": { "type": "integer", "default": 2, "minimum": 0 },
+        "runtime_retry_limit": { "type": "integer", "default": 3, "minimum": 0 },
+        "first_test_human_confirm": { "type": "boolean", "default": true },
+        "dependency_lock": { "type": "boolean", "default": true }
+      }
+    },
+    "roles": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": false },
+        "personas": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["planner", "implementer", "reviewer", "architect"] },
+          "default": []
+        }
+      }
+    },
+    "override": {
+      "type": "object",
+      "description": "Explicit overrides of starter/framework defaults. Every deviation must be declared here.",
+      "properties": {
+        "phases": { "type": "array" },
+        "memory": { "type": "object" },
+        "guardrails": { "type": "object" },
+        "roles": { "type": "object" },
+        "traceability": { "type": "object" }
+      }
+    }
+  }
+}

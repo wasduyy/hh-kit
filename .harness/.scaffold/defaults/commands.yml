@@ -1,0 +1,40 @@
+prefix: "/hh"
+description: "harness helper commands — parse flag after /hh prefix"
+
+commands:
+  - flag: null
+    name: "status"
+    action: "Read .control/state.json + activeContext.md + harness.summary.md, report project status"
+    auto_run: "session_start"
+
+  - flag: "-s"
+    name: "status"
+    action: "Read .control/state.json + activeContext.md + harness.summary.md, report project status"
+
+  - flag: "-t"
+    name: "trace"
+    args: "<ID>"
+    action: "Query upstream and downstream of trace node, show full causal chain"
+
+  - flag: "-v"
+    name: "validate"
+    action: "Run trace_validate, report broken chains or missing links"
+
+  - flag: "-n"
+    name: "next"
+    action: "Read activeContext.md, identify next unfinished item, ask user to confirm"
+
+  - flag: "-c"
+    name: "commit"
+    args: "[message]"
+    action: "Stage all changes, auto-generate trace ID via trace_next_id, commit with [IMP-xxx] format"
+
+  - flag: "-d"
+    name: "diagnose"
+    action: "Run .harness/scripts/diagnose.py, report results"
+
+  - flag: "-e"
+    name: "end"
+    action: "Update activeContext.md + progress.md, suggest phase advancement"
+
+matching_rule: "User input starts with /hh → parse next token as flag → execute action"

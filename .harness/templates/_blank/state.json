@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "project": "",
+  "current_phase": "scaffold",
+  "completed_phases": [],
+  "phases": {
+    "scaffold": {
+      "status": "in_progress",
+      "started_at": "",
+      "remaining_tasks": ["initialize project structure"]
+    }
+  }
+}
