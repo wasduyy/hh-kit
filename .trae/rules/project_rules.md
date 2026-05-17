@@ -1,4 +1,4 @@
-# archAIHelper
+# hh-kit
 
 ## `/hh` Commands — EXECUTE IMMEDIATELY when user input starts with `/hh`
 

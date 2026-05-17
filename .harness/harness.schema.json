@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://archaihelper.dev/harness.schema.json",
+  "$id": "https://hh-kit.dev/harness.schema.json",
   "title": "Harness Root Schema Reference",
   "description": "Points to the canonical harness configuration schema. See .scaffold/schemas/harness.schema.json for the full definition.",
   "$ref": ".scaffold/schemas/harness.schema.json"

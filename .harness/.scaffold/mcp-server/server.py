@@ -1,4 +1,4 @@
-"""archAIHelper MCP Server - Scaffold Tool Provider."""
+"""hh-kit MCP Server - Scaffold Tool Provider."""
 
 import glob
 import json
@@ -9,14 +9,33 @@ from datetime import datetime
 
 from mcp.server import Server
 
-server = Server("harness")
-
 _SERVER_DIR = os.path.dirname(os.path.abspath(__file__))
 _PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(_SERVER_DIR)))
 CONTROL_DIR = os.path.join(_PROJECT_DIR, ".control")
 KNOWLEDGE_DIR = os.path.join(_PROJECT_DIR, "knowledge")
 HARNESS_DIR = os.path.join(_PROJECT_DIR, ".harness")
 DB_PATH = os.path.join(CONTROL_DIR, "trace.db")
+
+
+def _read_project_name():
+    harness_yml = os.path.join(CONTROL_DIR, "harness.yml")
+    if os.path.exists(harness_yml):
+        try:
+            with open(harness_yml, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("name:"):
+                        name = line.split(":", 1)[1].strip().strip('"').strip("'")
+                        if name:
+                            return name
+        except Exception:
+            pass
+    return None
+
+
+_project_name = _read_project_name()
+_server_name = f"hh-kit--{_project_name}" if _project_name else "hh-kit"
+server = Server(_server_name)
 
 TYPE_MAP = {
     "requirement": "REQ", "analysis": "ANA", "decision": "DEC",

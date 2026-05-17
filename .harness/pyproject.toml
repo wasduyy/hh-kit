@@ -1,7 +1,7 @@
 [project]
-name = "archaihelper-scaffold"
+name = "hh-kit-scaffold"
 version = "0.1.0"
-description = "archAIHelper scaffold MCP Server"
+description = "hh-kit scaffold MCP Server"
 requires-python = ">=3.10"
 dependencies = [
     "mcp>=1.0.0",

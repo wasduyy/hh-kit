@@ -7,7 +7,7 @@ HARNESS_DIR = os.path.dirname(SCRIPT_DIR)
 PROJECT_DIR = os.path.dirname(HARNESS_DIR)
 CONTROL_DIR = os.path.join(PROJECT_DIR, ".control")
 
-print("=== archAIHelper Diagnostics ===\n")
+print("=== hh-kit Diagnostics ===\n")
 
 print("[1/5] Checking core files...")
 for label, path in [

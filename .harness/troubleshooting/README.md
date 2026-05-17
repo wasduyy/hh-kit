@@ -1,6 +1,6 @@
 # Troubleshooting
 
-Common issues and solutions when using the archAIHelper scaffold.
+Common issues and solutions when using the hh-kit scaffold.
 
 | Code | Issue | Quick Fix |
 |------|-------|-----------|
